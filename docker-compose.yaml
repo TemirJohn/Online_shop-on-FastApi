@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=temirzhan
+      - POSTGRES_PASSWORD=11466795
+      - POSTGRES_DB=shop_db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=temirzhan
+      - POSTGRES_PASSWORD=11466795
+      - POSTGRES_DB=shop_db
+    ports:
+      - "5432:5432"
+
